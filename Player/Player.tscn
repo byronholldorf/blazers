@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Tilesets/character.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "runDown"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "runLeft"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 13 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 25 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "runUp"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 37 ]
+}
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+graph_offset = Vector2( 0, -23.056 )
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "runLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "runRight"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "runDown"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "runUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=10]
+auto_triangles = false
+blend_point_0/node = SubResource( 6 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 7 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 8 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 9 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+triangles = PoolIntArray( 0, 1, 2, 0, 1, 3 )
+min_space = Vector2( -1, -1.2 )
+max_space = Vector2( 1, 1.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachine" id=13]
+states/Idle/node = SubResource( 5 )
+states/Idle/position = Vector2( 268, 153 )
+states/Run/node = SubResource( 10 )
+states/Run/position = Vector2( 521, 158 )
+transitions = [ "Idle", "Run", SubResource( 11 ), "Run", "Idle", SubResource( 12 ) ]
+graph_offset = Vector2( 0, 76.44 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 4.31005
+height = 4.82692
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 46.9429, 39.8351 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.24345, 4.37358 )
+texture = ExtResource( 2 )
+vframes = 8
+hframes = 12
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/runDown = SubResource( 1 )
+anims/runLeft = SubResource( 2 )
+anims/runRight = SubResource( 3 )
+anims/runUp = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 13 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 14 )
+parameters/Idle/playback = SubResource( 15 )
+parameters/Run/blend_position = Vector2( 0.00780034, -0.0206896 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.120644, 17.4588 )
+rotation = -1.55878
+shape = SubResource( 16 )
