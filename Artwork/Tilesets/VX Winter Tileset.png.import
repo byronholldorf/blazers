@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gallery_501_69_172662.png-3c807969b723cded127ac66e30f5c7d6.stex"
+path="res://.import/VX Winter Tileset.png-e2cdd507235cede1bc21001943cc4778.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/gallery_501_69_172662.png"
-dest_files=[ "res://.import/gallery_501_69_172662.png-3c807969b723cded127ac66e30f5c7d6.stex" ]
+source_file="res://Artwork/Tilesets/VX Winter Tileset.png"
+dest_files=[ "res://.import/VX Winter Tileset.png-e2cdd507235cede1bc21001943cc4778.stex" ]
 
 [params]
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Characters/Dropus.gd" type="Script" id=1]
-[ext_resource path="res://Characters/Dropus.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Dropus/Dropus.gd" type="Script" id=1]
+[ext_resource path="res://Artwork/Dropus.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bouncing"
@@ -20,6 +20,10 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.15816
+height = 15.9623
+
 [node name="Dropus" type="StaticBody2D"]
 script = ExtResource( 1 )
 
@@ -31,3 +35,8 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bouncing = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.21958 )
+rotation = 1.5708
+shape = SubResource( 2 )

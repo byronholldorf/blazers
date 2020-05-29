@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Artwork/Tilesets/gallery_501_69_92241.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.343, 19.9312 )
+
+[node name="DragonStatue" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 224, 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.681122, 11.2385 )
+shape = SubResource( 1 )
+
+[node name="DragonsFire" type="CPUParticles2D" parent="."]
+position = Vector2( 0.68129, 22.8176 )
+rotation = 0.809833
+amount = 93
+spread = 34.84
+flatness = 1.0
+gravity = Vector2( 65, 0 )
+initial_velocity = 50.86
+initial_velocity_random = 0.39
+angular_velocity = 720.0
+linear_accel = 69.89
+linear_accel_random = 0.2
+radial_accel = -100.0
+damping = 100.0
+scale_amount = 1.65
+scale_amount_random = 0.7
+color = Color( 1, 0.745098, 0.203922, 1 )
+hue_variation = -0.18
+hue_variation_random = 1.0

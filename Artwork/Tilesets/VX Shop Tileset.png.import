@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VX BuildingsTileset.png-7bf77e09739fe78329f32df9ca8734db.stex"
+path="res://.import/VX Shop Tileset.png-5147254572f497692468f676dcda37fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/VX BuildingsTileset.png"
-dest_files=[ "res://.import/VX BuildingsTileset.png-7bf77e09739fe78329f32df9ca8734db.stex" ]
+source_file="res://Artwork/Tilesets/VX Shop Tileset.png"
+dest_files=[ "res://.import/VX Shop Tileset.png-5147254572f497692468f676dcda37fe.stex" ]
 
 [params]
 

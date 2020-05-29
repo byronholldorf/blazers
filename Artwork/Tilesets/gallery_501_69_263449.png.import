@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dropus.png-20a2abf9c39aad5a3302c62948767063.stex"
+path="res://.import/gallery_501_69_263449.png-e0d86b5e3a5799d8980997c50dce6d53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Dropus.png"
-dest_files=[ "res://.import/Dropus.png-20a2abf9c39aad5a3302c62948767063.stex" ]
+source_file="res://Artwork/Tilesets/gallery_501_69_263449.png"
+dest_files=[ "res://.import/gallery_501_69_263449.png-e0d86b5e3a5799d8980997c50dce6d53.stex" ]
 
 [params]
 

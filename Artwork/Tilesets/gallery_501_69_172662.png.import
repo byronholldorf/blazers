@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gallery_501_69_403612.png-fa97c9311340665ca41aeabfa35396f2.stex"
+path="res://.import/gallery_501_69_172662.png-9aefa09fd0fb44fb949dc0d679ad08dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/gallery_501_69_403612.png"
-dest_files=[ "res://.import/gallery_501_69_403612.png-fa97c9311340665ca41aeabfa35396f2.stex" ]
+source_file="res://Artwork/Tilesets/gallery_501_69_172662.png"
+dest_files=[ "res://.import/gallery_501_69_172662.png-9aefa09fd0fb44fb949dc0d679ad08dc.stex" ]
 
 [params]
 
