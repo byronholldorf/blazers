@@ -13,6 +13,7 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	animationTree.active = true
 	animationState.start("Idle")
+	
 
 func get_move_direction():
 	var result = Vector2.ZERO
@@ -21,7 +22,6 @@ func get_move_direction():
 	result = result.normalized()
 	return result
 
-	
 
 func _physics_process(delta):
 	
@@ -39,3 +39,7 @@ func _physics_process(delta):
 	animationTree.advance(delta)
 
 	velocity = move_and_slide(velocity)
+
+func _on_player_relocate(x, y):
+	print(x+","+y)
+	pass # Replace with function body.
