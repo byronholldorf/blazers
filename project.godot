@@ -19,6 +19,10 @@ config/name="Pokemon Game"
 run/main_scene="res://Areas/World1.tscn"
 config/icon="res://Artwork/icon.png"
 
+[autoload]
+
+event_bus="*res://event_bus.gd"
+
 [display]
 
 window/size/width=427

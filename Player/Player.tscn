@@ -75,7 +75,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationNodeStateMachine" id=5]
-graph_offset = Vector2( 0, -23.056 )
+graph_offset = Vector2( -1165, -262 )
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "runLeft"
@@ -110,7 +110,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id=13]
 states/Idle/node = SubResource( 5 )
-states/Idle/position = Vector2( 270, 158 )
+states/Idle/position = Vector2( 269, 158 )
 states/Run/node = SubResource( 10 )
 states/Run/position = Vector2( 521, 158 )
 transitions = [ "Idle", "Run", SubResource( 11 ), "Run", "Idle", SubResource( 12 ) ]
@@ -132,7 +132,7 @@ position = Vector2( -0.639156, 3.11488 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 12
-frame = 24
+frame = 37
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
@@ -148,7 +148,7 @@ active = true
 process_mode = 0
 parameters/playback = SubResource( 14 )
 parameters/Idle/playback = SubResource( 15 )
-parameters/Run/blend_position = Vector2( 0.00780034, -0.0206896 )
+parameters/Run/blend_position = Vector2( -0.00460827, -0.0103449 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

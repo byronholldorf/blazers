@@ -13,7 +13,7 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	animationTree.active = true
 	animationState.start("Idle")
-	
+
 
 func get_move_direction():
 	var result = Vector2.ZERO

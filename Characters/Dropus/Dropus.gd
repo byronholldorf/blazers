@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends KinematicBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -6,9 +6,8 @@ extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.current_animation = "bouncing"
-	$AnimationPlayer.play()
+	#$AnimationPlayer.current_animation = "bouncing"
+	#$AnimationPlayer.play()
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	

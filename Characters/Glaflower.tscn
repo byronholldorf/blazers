@@ -1,10 +1,127 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Artwork/Glaflower-walking.png" type="Texture" id=1]
+[ext_resource path="res://Characters/SimpleAI.tscn" type="PackedScene" id=2]
 
-[node name="Glaflower" type="StaticBody2D"]
+[sub_resource type="Animation" id=1]
+resource_name = "runLeft"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 4, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "runRight"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 3, 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "runUp"
+length = 0.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="AnimationNodeStateMachine" id=4]
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "runLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "runRight"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "runUp"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "runLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=14]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 0, -1.2 )
+blend_point_3/node = SubResource( 17 )
+blend_point_3/pos = Vector2( 0, 1.2 )
+min_space = Vector2( -1, -1.4 )
+max_space = Vector2( 1, 1.4 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/Idle/node = SubResource( 4 )
+states/Idle/position = Vector2( 292, 55 )
+states/Run/node = SubResource( 14 )
+states/Run/position = Vector2( 439, 55 )
+transitions = [ "Idle", "Run", SubResource( 15 ), "Run", "Idle", SubResource( 16 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[node name="Glaflower" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 3
+frame = 2
+
+[node name="SimpleAI" parent="." instance=ExtResource( 2 )]
+FLEE_DISTANCE = 30
+FLEE_SPEED = 10
+WANDER_TIME_MIN = 1
+WANDER_TIME_MAX = 1
+STILL_TIME_MIN = 5
+STILL_TIME_MAX = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/runLeft = SubResource( 1 )
+anims/runRight = SubResource( 2 )
+anims/runUp = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 19 )
+parameters/Idle/playback = SubResource( 18 )
+parameters/Run/blend_position = Vector2( -1, 0 )
