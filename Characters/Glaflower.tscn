@@ -117,6 +117,8 @@ height = 9.14181
 
 [node name="Glaflower" type="KinematicBody2D"]
 editor/display_folded = true
+collision_layer = 4
+collision_mask = 7
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.299782, 2.8479 )

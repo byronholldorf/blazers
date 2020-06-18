@@ -33,6 +33,16 @@ func _physics_process(delta):
 			self.get_parent().remove_child(self)
 			self.queue_free()
 			
-	sprite.set("offset", Vector2(0, START_HEIGHT-height))
+	sprite.set("offset", Vector2(0, START_HEIGHT - height))
 	
-	velocity = move_and_slide(velocity)
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = Vector2.ZERO
+		if collision.collider.get("collision_mask") & 0x04:
+			self.get_parent().remove_child(self)
+			var blazer = collision.collider
+			blazer.get_parent().remove_child(self)
+			self.queue_free()
+			blazer.queue_free()
+		
+	
