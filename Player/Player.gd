@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO
+var lastfacing = Vector2.RIGHT
+var blazerballScene
 
 export var ACCELERATION = 5
 export var MAX_SPEED = 120
@@ -13,7 +15,7 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	animationTree.active = true
 	animationState.start("Idle")
-
+	blazerballScene = load("res://Player/blazerball.tscn")
 
 func get_move_direction():
 	var result = Vector2.ZERO
@@ -32,11 +34,20 @@ func _physics_process(delta):
 		#animationTree.set("parameters/Idle/blend_position", move_direction)
 		animationTree.set("parameters/Run/blend_position", move_direction)
 		animationState.travel("Run")
+		lastfacing = move_direction
 	else:
 		velocity = velocity.linear_interpolate(Vector2.ZERO, FRICTION * delta)
 		animationState.travel("Idle")
-		
+	
 	animationTree.advance(delta)
+
+	if Input.is_action_just_pressed("throw"):
+		var newball = self.blazerballScene.instance()
+		newball.position = self.position
+		newball.direction = lastfacing
+		self.get_parent().add_child(newball)
+
+
 
 	velocity = move_and_slide(velocity)
 

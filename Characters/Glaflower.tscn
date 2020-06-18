@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Artwork/Glaflower-walking.png" type="Texture" id=1]
 [ext_resource path="res://Characters/SimpleAI.tscn" type="PackedScene" id=2]
@@ -111,9 +111,15 @@ transitions = [ "Idle", "Run", SubResource( 11 ), "Run", "Idle", SubResource( 12
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 4.36516
+height = 9.14181
+
 [node name="Glaflower" type="KinematicBody2D"]
+editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.299782, 2.8479 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 3
@@ -141,3 +147,8 @@ active = true
 parameters/playback = SubResource( 14 )
 parameters/Idle/playback = SubResource( 15 )
 parameters/Run/blend_position = Vector2( -0.00203252, 0.0482758 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.599571, 14.989 )
+rotation = 1.5708
+shape = SubResource( 16 )
