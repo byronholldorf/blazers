@@ -1,10 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/blazerball.gd" type="Script" id=1]
-[ext_resource path="res://Artwork/blazerball.png" type="Texture" id=2]
+[ext_resource path="res://Artwork/blazerballs.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.9959
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=3]
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.86054, -0.25, 0, 0.25, 0, -2.32568, -0.25, 0, 0.25, 0, 2.09311, -0.25, 0, 0.25, 0, -1.47984, -0.25, 0, 0.25, 0, 1.1683, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.43, 0.81, 1.38, 2.01, 2.57, 3.31 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 8.07528, -0.25, 0, 0.25, 0, -6.99858, -0.25, 0, 0.25, 0, 0.930272, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.37, 0.78, 1.35 )
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "capture"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachine" id=7]
+states/Idle/node = SubResource( 4 )
+states/Idle/position = Vector2( 239, 68 )
+states/capture/node = SubResource( 5 )
+states/capture/position = Vector2( 433, 68 )
+transitions = [ "Idle", "capture", SubResource( 6 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 8
@@ -16,4 +59,18 @@ position = Vector2( -0.147945, 17.6957 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.161991, 0 )
+rotation = 0.0162363
 texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+anims/capture = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 8 )

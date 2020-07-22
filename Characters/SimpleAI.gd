@@ -94,4 +94,4 @@ func _process(delta):
 		#animationState.travel("Run")
 		#animationTree.set("parameters/Run/blend_position", Vector2(1,0))
 		animationTree.set("parameters/Run/blend_position", state_velocity)
-		animationTree.advance(delta)	
+		animationTree.advance(delta)

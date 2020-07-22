@@ -11,6 +11,7 @@ export var FRICTION = 15
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+onready var blazerball_select = get_node("/root/World/GUI/Blazerball")
 
 func _ready():
 	animationTree.active = true
@@ -45,6 +46,7 @@ func _physics_process(delta):
 		var newball = self.blazerballScene.instance()
 		newball.position = self.position
 		newball.direction = lastfacing
+		newball.get_node("Sprite").frame = blazerball_select.frame
 		self.get_parent().add_child(newball)
 
 
