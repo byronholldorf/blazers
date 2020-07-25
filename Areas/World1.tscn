@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Areas/World1.gd" type="Script" id=1]
 [ext_resource path="res://Artwork/Tilesets/gallery_501_69_142045.png" type="Texture" id=2]
@@ -14,11 +14,14 @@
 [ext_resource path="res://Characters/Dropus.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Characters/HootHoot.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Characters/Wotrien.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Artwork/Tilesets/ground.png" type="Texture" id=15]
-[ext_resource path="res://Areas/Door.gd" type="Script" id=16]
-[ext_resource path="res://Artwork/blazerballs.png" type="Texture" id=17]
-[ext_resource path="res://Player/Blazerball-gui.gd" type="Script" id=18]
-[ext_resource path="res://Characters/Batchree.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Characters/Batchree.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Artwork/Tilesets/ground.png" type="Texture" id=16]
+[ext_resource path="res://Areas/Door.gd" type="Script" id=17]
+[ext_resource path="res://Artwork/blazerballs.png" type="Texture" id=18]
+[ext_resource path="res://Player/Blazerball-gui.gd" type="Script" id=19]
+[ext_resource path="res://Areas/NextBlazerballBtn.gd" type="Script" id=20]
+[ext_resource path="res://Artwork/icon.png" type="Texture" id=21]
+[ext_resource path="res://Areas/ThrowBtn.gd" type="Script" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "gallery_501_69_142045.png 0"
@@ -447,7 +450,7 @@ script = SubResource( 38 )
 
 [sub_resource type="TileSet" id=40]
 2/name = "ground.png 2"
-2/texture = ExtResource( 15 )
+2/texture = ExtResource( 16 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 128, 64, 64, 32 )
@@ -466,7 +469,7 @@ script = SubResource( 38 )
 2/shapes = [  ]
 2/z_index = -4
 3/name = "ground.png 3"
-3/texture = ExtResource( 15 )
+3/texture = ExtResource( 16 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 192, 64, 64, 32 )
@@ -538,7 +541,7 @@ points = PoolVector2Array( 17.0522, 31.5877, 28.223, 17.8597, 32, 17.0522, 31.85
 
 [sub_resource type="TileSet" id=58]
 0/name = "ground.png 0"
-0/texture = ExtResource( 15 )
+0/texture = ExtResource( 16 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 192, 96 )
@@ -659,7 +662,7 @@ points = PoolVector2Array( 17.0522, 31.5877, 28.223, 17.8597, 32, 17.0522, 31.85
 } ]
 0/z_index = -3
 2/name = "ground.png 2"
-2/texture = ExtResource( 15 )
+2/texture = ExtResource( 16 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 96, 256, 192 )
@@ -760,7 +763,7 @@ position = Vector2( 300.694, 162.792 )
 position = Vector2( 387.813, -381.202 )
 
 [node name="Tree13" parent="Node2D/Things/Props" instance=ExtResource( 7 )]
-position = Vector2( 362.379, 187.878 )
+position = Vector2( 358.077, 185.369 )
 
 [node name="BlueOrbStatue" parent="Node2D/Things/Props" instance=ExtResource( 8 )]
 position = Vector2( 496.175, -127.151 )
@@ -775,7 +778,6 @@ position = Vector2( 693.255, 228.411 )
 position = Vector2( 350.176, 331.046 )
 
 [node name="Player" parent="Node2D/Things" instance=ExtResource( 10 )]
-editor/display_folded = true
 position = Vector2( 870.487, 446.892 )
 z_as_relative = false
 ACCELERATION = 10
@@ -785,6 +787,7 @@ FRICTION = 25
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Creatures" type="YSort" parent="Node2D/Things"]
+editor/display_folded = true
 
 [node name="Glaflower" parent="Node2D/Things/Creatures" instance=ExtResource( 11 )]
 position = Vector2( 1034.1, 871.739 )
@@ -891,6 +894,30 @@ position = Vector2( 787.833, 685.27 )
 [node name="HootHoot12" parent="Node2D/Things/Creatures" instance=ExtResource( 13 )]
 position = Vector2( 946.967, 684.243 )
 
+[node name="HootHoot13" parent="Node2D/Things/Creatures" instance=ExtResource( 13 )]
+position = Vector2( 700.569, 259.84 )
+
+[node name="Dropus12" parent="Node2D/Things/Creatures" instance=ExtResource( 12 )]
+position = Vector2( 500.775, 703.891 )
+
+[node name="Glaflower12" parent="Node2D/Things/Creatures" instance=ExtResource( 11 )]
+position = Vector2( 540.169, 692.401 )
+
+[node name="Wotrien2" parent="Node2D/Things/Creatures" instance=ExtResource( 14 )]
+position = Vector2( 921.951, 494.24 )
+
+[node name="Batchree" parent="Node2D/Things/Creatures" instance=ExtResource( 15 )]
+position = Vector2( 760.819, 463.573 )
+
+[node name="Batchree2" parent="Node2D/Things/Creatures" instance=ExtResource( 15 )]
+position = Vector2( 479.097, 437.584 )
+
+[node name="Batchree3" parent="Node2D/Things/Creatures" instance=ExtResource( 15 )]
+position = Vector2( 820.075, 550.377 )
+
+[node name="Batchree4" parent="Node2D/Things/Creatures" instance=ExtResource( 15 )]
+position = Vector2( 614.76, 352.86 )
+
 [node name="Floor" type="TileMap" parent="Node2D"]
 z_index = -5
 tile_set = SubResource( 40 )
@@ -920,7 +947,7 @@ polygon = PoolVector2Array( 1055.33, 417.158, 1054.14, 256.098, 977.497, 202.81,
 editor/display_folded = true
 position = Vector2( 978.251, 402.701 )
 input_pickable = false
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -929,9 +956,6 @@ __meta__ = {
 position = Vector2( -0.583984, -0.291992 )
 shape = SubResource( 59 )
 
-[node name="HootHoot" parent="Node2D" instance=ExtResource( 13 )]
-position = Vector2( 700.569, 259.84 )
-
 [node name="Node" type="Node" parent="."]
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -939,31 +963,27 @@ position = Vector2( 700.569, 259.84 )
 [node name="Blazerball" type="Sprite" parent="GUI"]
 position = Vector2( 412.013, 16.0615 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 vframes = 2
 hframes = 2
 frame = 1
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
-[node name="Dropus" parent="." instance=ExtResource( 12 )]
-position = Vector2( 500.775, 703.891 )
+[node name="NextBlazerballBtn" type="TextureButton" parent="GUI/Blazerball"]
+margin_left = -12.0
+margin_top = -8.0
+margin_right = 7.0
+margin_bottom = 10.0
+script = ExtResource( 20 )
 
-[node name="Glaflower" parent="." instance=ExtResource( 11 )]
-position = Vector2( 540.169, 692.401 )
-
-[node name="Wotrien" parent="." instance=ExtResource( 14 )]
-position = Vector2( 921.951, 494.24 )
-
-[node name="Batchree" parent="." instance=ExtResource( 19 )]
-position = Vector2( 760.819, 463.573 )
-
-[node name="Batchree2" parent="." instance=ExtResource( 19 )]
-position = Vector2( 479.097, 437.584 )
-
-[node name="Batchree3" parent="." instance=ExtResource( 19 )]
-position = Vector2( 820.075, 550.377 )
-
-[node name="Batchree4" parent="." instance=ExtResource( 19 )]
-position = Vector2( 614.76, 352.86 )
+[node name="ThrowBtn" type="TextureButton" parent="GUI"]
+margin_left = 363.176
+margin_top = 175.679
+margin_right = 427.176
+margin_bottom = 239.679
+shortcut_in_tooltip = false
+action_mode = 0
+texture_normal = ExtResource( 21 )
+script = ExtResource( 22 )
 [connection signal="item_rect_changed" from="Node2D/Things/Player" to="Node2D/Things/Player" method="_on_Player_item_rect_changed"]
 [connection signal="body_shape_entered" from="Node2D/Building1/Area2D" to="Node2D/Building1/Area2D" method="_on_Area2D_body_shape_entered"]

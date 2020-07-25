@@ -13,7 +13,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
+
 func _process(delta):
+	if Input.is_action_just_pressed("next_blazer_ball"):
+		frame = (frame + 1) % 4
 	if Input.is_action_just_pressed("1"):
 		frame = 0
 	if Input.is_action_just_pressed("2"):
@@ -22,3 +25,4 @@ func _process(delta):
 		frame = 2
 	if Input.is_action_just_pressed("4"):
 		frame = 3
+
