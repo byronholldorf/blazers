@@ -18,7 +18,7 @@ export var FRICTION = 15
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
-onready var blazerball_select = get_node("/root/World/GUI/Blazerball")
+onready var blazerball_select = get_node("/root/Game/GUI/Blazerball")
 
 func _ready():
 	animationTree.active = true

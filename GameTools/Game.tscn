@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GameTools/Game.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Artwork/blazerballs.png" type="Texture" id=3]
+[ext_resource path="res://Player/Blazerball-gui.gd" type="Script" id=4]
+[ext_resource path="res://GameTools/NextBlazerballBtn.gd" type="Script" id=5]
+[ext_resource path="res://Artwork/button.png" type="Texture" id=6]
+[ext_resource path="res://GameTools/ThrowBtn.gd" type="Script" id=7]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends RemoteTransform2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	pass # Replace with function body.
+
+"
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 414.525 ]
+}
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+position = Vector2( 870.487, 446.892 )
+current = true
+
+[node name="Area" type="Node" parent="World"]
+
+[node name="Player" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 870.487, 446.892 )
+z_as_relative = false
+ACCELERATION = 10
+FRICTION = 25
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player"]
+remote_path = NodePath("../../Camera2D")
+script = SubResource( 1 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="Blazerball" type="Sprite" parent="GUI"]
+position = Vector2( 412.013, 16.0615 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+frame = 1
+script = ExtResource( 4 )
+
+[node name="NextBlazerballBtn" type="TextureButton" parent="GUI/Blazerball"]
+margin_left = -12.0
+margin_top = -8.0
+margin_right = 7.0
+margin_bottom = 10.0
+script = ExtResource( 5 )
+
+[node name="ThrowBtn" type="TextureButton" parent="GUI"]
+margin_left = 377.0
+margin_top = 188.0
+margin_right = 427.0
+margin_bottom = 240.0
+shortcut_in_tooltip = false
+action_mode = 0
+texture_normal = ExtResource( 6 )
+script = ExtResource( 7 )
+[connection signal="item_rect_changed" from="World/Player" to="World/Player" method="_on_Player_item_rect_changed"]

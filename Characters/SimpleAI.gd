@@ -86,7 +86,7 @@ func state_wandering(delta):
 
 func _process(delta):
 	if player == null:
-		player = get_node("/root/World").get_player()
+		player = get_node("/root/Game").get_player()
 
 	state = state.call_func(delta)
 	

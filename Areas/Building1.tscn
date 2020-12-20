@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Artwork/Tilesets/VX Interior Tileset.png" type="Texture" id=1]
 [ext_resource path="res://Artwork/Tilesets/gallery_501_69_49685.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Areas/Building1.gd" type="Script" id=4]
+[ext_resource path="res://GameTools/TeleportArea.tscn" type="PackedScene" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "VX Interior Tileset.png 0"
@@ -39,9 +38,6 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 22.3754, 20.1891 )
-
 [node name="Building1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -50,13 +46,8 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 2, 0, 262147, 6, 0, 458764, 7, 0, 786437, 8, 0, 262148, 65540, 0, 262153, 65541, 0, 262153, 65542, 0, 524300, 65543, 0, 851973, 131074, 1, 655361, 131075, 1, 655361, 131076, 1, 655361, 131077, 1, 655361, 131078, 1, 655361, 131079, 0, 851973, 131080, 1, 655361, 196610, 1, 655361, 196611, 1, 655361, 196612, 1, 655361, 196613, 1, 655361, 196614, 1, 655361, 196615, 1, 655361, 196616, 1, 655361, 262146, 0, 917504, 262147, 1, 655361, 262148, 1, 655361, 262149, 1, 655361, 262150, 1, 655361, 262151, 1, 655361, 262152, 0, 917507, 327682, 0, 983040, 327683, 1, 655361, 327684, 1, 655361, 327685, 1, 655361, 327686, 1, 655361, 327687, 1, 655361, 327688, 0, 983043, 393221, 1, 655361, 458757, 0, 458756 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 176.543, 197.234 )
+[node name="PlayerStart" type="Node2D" parent="."]
+position = Vector2( 174.197, 191.85 )
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 177.773, 242.783 )
-shape = SubResource( 2 )
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[node name="TeleportArea" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176.774, 242.197 )

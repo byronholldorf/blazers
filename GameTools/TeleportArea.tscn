@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameTools/Teleport.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 18.0713, 18.0186 )
+
+[node name="TeleportArea" type="Area2D"]
+position = Vector2( -0.0635376, 0.412125 )
+input_pickable = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.583984, -0.291992 )
+shape = SubResource( 1 )

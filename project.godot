@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Blazers"
-run/main_scene="res://Areas/World1.tscn"
+run/main_scene="res://GameTools/Game.tscn"
 config/icon="res://Artwork/icon.png"
 
 [autoload]
