@@ -8,6 +8,7 @@ var current_location = ""
 
 var levels = {
 	"test": preload("res://Areas/Test-Level.tscn").instance(),
+	"building2": preload("res://Areas/Building2.tscn").instance(),
 	"building1": preload("res://Areas/Building1.tscn").instance()
 }
 
